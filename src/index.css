@@ -1,0 +1,6 @@
+/* eslint-disable */
+/* postcss config aware */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
