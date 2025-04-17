@@ -1,14 +1,21 @@
-import PromptHistory from "./lib/components/PromptHistory";
-import PromptInput from "./lib/components/PromptInput";
-import PromptResponse from "./lib/components/PropmtResponse";
+import { useEffect } from "react";
+import PromptConsole from "./lib/components/PromptConsole";
 
 function App() {
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    if (
+      saved === "dark" ||
+      (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "2rem" }}>
-      <h1>AiReduxPromptManager</h1>
-      <PromptInput />
-      <PromptResponse />
-      <PromptHistory />
+    <div>
+      <PromptConsole title={"ChatPropmt"} placeholder="let's chat..." />
     </div>
   );
 }

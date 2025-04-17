@@ -29,6 +29,16 @@ export const submitPrompt = createAsyncThunk(
   }
 );
 
+function createPromptItem(prompt: string, response: string): PromptItem {
+  return {
+    id: crypto.randomUUID(),
+    prompt,
+    response,
+    timestamp: new Date().toISOString(),
+  };
+}
+const MAX_HISTORY = 100;
+
 const promptSlice = createSlice({
   name: "prompt",
   initialState,
@@ -38,6 +48,20 @@ const promptSlice = createSlice({
     },
     clearHistory: (state) => {
       state.history = [];
+    },
+
+    submitPromptManually: (
+      state,
+      action: PayloadAction<{ input: string; response: string }>
+    ) => {
+      const { input, response } = action.payload;
+      state.history.push(createPromptItem(input, response));
+
+      if (state.history.length > MAX_HISTORY) {
+        state.history.shift();
+      }
+      state.input = "";
+      state.loading = false;
     },
   },
   extraReducers: (builder) => {
@@ -49,13 +73,15 @@ const promptSlice = createSlice({
       .addCase(
         submitPrompt.fulfilled,
         (state, action: PayloadAction<string>) => {
-          const newItem: PromptItem = {
-            id: crypto.randomUUID(),
-            prompt: state.input,
-            response: action.payload,
-            timestamp: new Date().toISOString(),
-          };
-          state.history.unshift(newItem);
+          const prompt = state.input;
+          console.log("Prompt:", prompt);
+          console.log("Response:", action.payload);
+          const response = action.payload;
+          state.history.push(createPromptItem(prompt, response));
+          if (state.history.length > MAX_HISTORY) {
+            state.history.shift();
+          }
+
           state.input = "";
           state.loading = false;
         }
@@ -67,5 +93,6 @@ const promptSlice = createSlice({
   },
 });
 
-export const { setInput, clearHistory } = promptSlice.actions;
+export const { setInput, clearHistory, submitPromptManually } =
+  promptSlice.actions;
 export default promptSlice.reducer;
