@@ -74,8 +74,6 @@ const promptSlice = createSlice({
         submitPrompt.fulfilled,
         (state, action: PayloadAction<string>) => {
           const prompt = state.input;
-          console.log("Prompt:", prompt);
-          console.log("Response:", action.payload);
           const response = action.payload;
           state.history.push(createPromptItem(prompt, response));
           if (state.history.length > MAX_HISTORY) {

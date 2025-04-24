@@ -1,7 +1,6 @@
 {
   "name": "ai-prompt-manager",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,21 +8,30 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "main": "dist/ai-prompt-manager.umd.js",
+  "module": "dist/ai-prompt-manager.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-redux": "^8.0.0",
+    "@reduxjs/toolkit": "^2.6.0"
+  },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.6.1",
-    "@tailwindcss/typography": "^0.5.16",
-    "lucide-react": "^0.487.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
-    "react-redux": "^9.2.0",
-    "rehype-highlight": "^7.0.2"
+    "rehype-highlight": "^7.0.2",
+    "lucide-react": "^0.487.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@types/react": "^18.0.38",
+    "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.3.4",
+    "@eslint/js": "^9.21.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
@@ -34,5 +42,17 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "A React library for managing AI prompts with a chat-like interface.",
+  "keywords": [
+    "react",
+    "ai",
+    "prompt",
+    "library"
+  ],
+  "author": "May Hemade <may.hemade1993@gmail.com>",
+  "license": "MIT"
 }

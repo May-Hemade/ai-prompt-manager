@@ -1,0 +1,55 @@
+:root {
+  --pm-bg: #ffffff;
+  --pm-text: #1f2937;
+  --pm-primary: #2563eb;
+  --pm-border: #e5e7eb;
+  --pm-response-text: #1f2937;
+  --pm-button-text: #ffffff;
+  --pm-code-bg: #f9fafb;
+  --pm-code-text: #1f2937;
+  --pm-padding: 1.5rem;
+  --pm-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+               0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --pm-bubble-bg: #f3f4f6;
+  --pm-bubble-text: #1f2937;
+
+  --pm-copy-btn-bg: #e5e7eb;
+  --pm-copy-btn-text: #1f2937;
+  --pm-copy-btn-hover-bg: #d1d5db;
+}
+
+
+.dark {
+  --pm-bg: #1f2937;
+  --pm-text: #f3f4f6;
+  --pm-primary: #3b82f6;
+  --pm-border: #374151;
+  --pm-response-text: #ffffff;
+  --pm-button-text: #ffffff;
+  --pm-code-bg: #111827;
+  --pm-code-text: #f3f4f6;
+
+  --pm-bubble-bg: #1f2937;
+  --pm-bubble-text: #f3f4f6;
+
+  --pm-copy-btn-bg: #374151;
+  --pm-copy-btn-text: #f9fafb;
+  --pm-copy-btn-hover-bg: #4b5563;
+}
+
+form {
+  height: auto;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
